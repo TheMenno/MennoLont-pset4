@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     DBHelper helper;
     Context context;
     ArrayList<ToDo> todoList;
+    ArrayList<ToDo> todoLister;
     ToDo todo;
     ListView todoView;
     TextView todoTitle;
@@ -39,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
         // Create the database helper.
         context = this;
         helper = new DBHelper(this);
+
+        todoLister = helper.read();
+
+        if (todoLister.isEmpty()) {
+            ToDo todo1 = new ToDo("Welcome to the to-do list app!", "Not completed");
+            helper.create(todo1);
+
+            ToDo todo2 = new ToDo("You can add a new to-do in the bar above", "Not completed");
+            helper.create(todo2);
+
+            ToDo todo3 = new ToDo("Click on an item to complete it, hold to delete an item", "Not completed");
+            helper.create(todo3);
+        }
+
 
         // Open the database and print the to-do items.
         updateScreen();

@@ -47,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void create(ToDo todo) {
         SQLiteDatabase db = getWritableDatabase();
-        // onUpgrade(db, 1, 1);
+        //onUpgrade(db, 1, 1);
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, todo.getTitle());
         values.put(KEY_COMPLETED, todo.getCompleted());
